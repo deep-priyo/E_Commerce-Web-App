@@ -28,7 +28,7 @@ def shop():
     return render_template('shop.html', products=products)
 
 
-@app.route('/shop-pro')
+@app.route('/page')
 def shop_product():
     return render_template('shop-details.html')
 
@@ -38,6 +38,9 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/item/<int:id>')
+def item(id):
+    return render_template("shop-details.html",id=id)
 @app.route('/contact')
 def contact():
     return render_template('contact.html')
