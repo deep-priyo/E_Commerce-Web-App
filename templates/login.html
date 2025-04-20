@@ -1,18 +1,99 @@
 {% include 'header.html' %}
 
+<div class="login-container">
     <h2>Login</h2>
     <form method="POST" action="">
         {{ form.hidden_tag() }}
-        <div>
-            {{ form.username.label }}
-            {{ form.username(size=20) }}
+        <div class="form-group">
+            {{ form.username.label(class="form-label") }}
+            {{ form.username(class="form-input", size=20) }}
         </div>
-        <div>
-            {{ form.password.label }}
-            {{ form.password(size=20) }}
+        <div class="form-group">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-input", size=20) }}
         </div>
-        <div>
-            {{ form.submit() }}
+        <div class="form-group">
+            {{ form.submit(class="form-button") }}
         </div>
     </form>
+</div>
+
 {% include 'footer.html' %}
+
+<style>
+  /* Centering the form */
+  .login-container {
+      width: 100%;
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+  }
+
+  /* Heading styling */
+  .login-container h2 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 20px;
+  }
+
+  /* Form fields */
+  .form-group {
+      margin-bottom: 15px;
+      text-align: left;
+  }
+
+  /* Labels */
+  .form-label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+  }
+
+  /* Input fields */
+  .form-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+      transition: border-color 0.3s ease-in-out;
+  }
+
+  /* Focus effect on input */
+  .form-input:focus {
+      border-color: #007bff;
+      outline: none;
+  }
+
+  /* Submit button */
+  .form-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+  }
+
+  .form-button:hover {
+      background-color: #0056b3;
+  }
+
+  /* Responsive design */
+  @media (max-width: 480px) {
+      .login-container {
+          padding: 15px;
+          max-width: 90%;
+      }
+  }
+</style>
