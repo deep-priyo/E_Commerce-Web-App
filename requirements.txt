@@ -7,6 +7,7 @@ decorator==5.1.1
 dominate==2.9.1
 dotenv==0.9.9
 Flask==2.2.5
+psycopg2-binary
 Flask-Bcrypt==1.0.1
 Flask-Bootstrap==3.3.7.1
 flask-bootstrap5==0.1.dev1
