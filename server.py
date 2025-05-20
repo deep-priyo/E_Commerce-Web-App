@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, redirect, request, flash, make_response, session
-from flask_bootstrap import Bootstrap5
+from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from sqlalchemy.orm import DeclarativeBase
@@ -33,7 +33,7 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
-Bootstrap5(app)
+Bootstrap(app)
 
 # Database models
 class Product(db.Model):
@@ -82,8 +82,8 @@ class AdminForm(FlaskForm):
     submit = SubmitField('Add Product')
 
 # Database initialization
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 # After request handling
 @app.after_request
@@ -243,4 +243,6 @@ def faq():
     return render_template('faq.html')
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5001)
+    with app.app_context():
+        db.create_all()
+    app.run()
