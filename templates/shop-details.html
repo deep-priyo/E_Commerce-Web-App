@@ -1,76 +1,85 @@
 {% include "header.html" %}
 
-<div class="container mt-5 mb-5 product-details">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="row">
-                    <!-- Images Section -->
-                    <div class="col-md-6">
-                        <div class="images p-3">
-                            <!-- Main Image -->
-                            <div class="text-center p-4">
-                                <img id="main-image" src="{{product.imgUrl1}}" class="img-fluid" />
-                            </div>
-                            <!-- Thumbnail Slider -->
-                            <div class="swiper-container thumbnail-slider">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img onclick="change_image(this)" src="{{product.imgUrl2}}" class="img-fluid" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img onclick="change_image(this)" src="{{product.imgUrl3}}" class="img-fluid" />
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img onclick="change_image(this)" src="{{product.imgUrl4}}" class="img-fluid" />
-                                    </div>
-                                </div>
-                                <!-- Add Arrows -->
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Product Details Section -->
-                    <div class="col-md-6">
-                        <div class="product p-4">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="d-flex align-items-center">
-                                    <a href="{{ url_for('shop') }}" class="back-link">
-                                        <i class="fa fa-long-arrow-left"></i>
-                                        <span class="ml-1">Back</span>
-                                    </a>
-                                </div>
-                                <i class="fa fa-shopping-cart text-muted"></i>
-                            </div>
-                            <div class="mt-4 mb-3">
-                                <span class="text-uppercase text-muted brand">THE MMG's</span>
-                                <h5 class="text-uppercase">{{product.title}}</h5>
-                                <div class="price d-flex flex-row align-items-center">
-                                    <span class="act-price">₹ {{product.price}}</span>
-                                    <div class="ml-2">
-                                        <small class="dis-price">₹ {{product.original_price}}</small>
-                                        <span class="discount-percentage"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <p class="about">{{product.productInfo}}</p>
-                            <div class="sizes mt-5">
-                                <p><span class="font-weight-bold">Sizes Available: {{product.sizes}}</span></p>
-                            </div>
-                            <div class="sizes mt-4">
-                                <p><span class="font-weight-bold">Colors Available: {{product.colors}}</span></p>
-                            </div>
-                            <div class="sizes mt-4">
-                                <p><span class="font-weight-bold">Category: {{product.category}}</span></p>
-                            </div>
-                            <div class="cart mt-4 align-items-center">
-                                <button id="whatsapp-button" class="btn btn-danger text-uppercase mr-2 px-4">Order via WhatsApp</button>
-                                <i id="share-button" class="fa fa-share-alt text-muted"></i>
-                            </div>
-                        </div>
+<div class="product-container">
+    <div class="product-wrapper">
+        <!-- Images Section -->
+        <div class="product-images">
+            <!-- Thumbnail Navigation -->
+            <div class="thumbnail-nav">
+                <div class="thumbnail-item active" onclick="change_image('{{product.imgUrl1}}', this)">
+                    <img src="{{product.imgUrl1}}" alt="Product view 1" />
+                </div>
+                <div class="thumbnail-item" onclick="change_image('{{product.imgUrl2}}', this)">
+                    <img src="{{product.imgUrl2}}" alt="Product view 2" />
+                </div>
+                <div class="thumbnail-item" onclick="change_image('{{product.imgUrl3}}', this)">
+                    <img src="{{product.imgUrl3}}" alt="Product view 3" />
+                </div>
+                <div class="thumbnail-item" onclick="change_image('{{product.imgUrl4}}', this)">
+                    <img src="{{product.imgUrl4}}" alt="Product view 4" />
+                </div>
+            </div>
+
+            <!-- Main Image Display -->
+            <div class="main-image-container">
+                <img id="main-image" src="{{product.imgUrl1}}" alt="{{product.title}}" />
+                <div class="image-navigation">
+                    <button class="nav-btn prev-btn" onclick="previousImage()">‹</button>
+                    <button class="nav-btn next-btn" onclick="nextImage()">›</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <div class="product-details">
+            <div class="product-header">
+                <a href="{{ url_for('shop') }}" class="back-link">
+                    ← Back to Shop
+                </a>
+            </div>
+
+            <div class="product-info">
+                <div class="brand-name">Vogue Vista</div>
+                <h1 class="product-title">{{product.title}}</h1>
+                <div class="product-category">{{product.category}}</div>
+
+                <div class="price-section">
+                    <div class="current-price">₹{{product.price}}</div>
+                    <div class="original-price">₹{{product.original_price}}</div>
+                    <div class="discount-badge" id="discount-badge"></div>
+                </div>
+
+                <div class="tax-info">Inclusive of all taxes</div>
+            </div>
+
+            <div class="product-description">
+                <p>{{product.productInfo}}</p>
+            </div>
+
+            <div class="product-options">
+                <div class="option-group">
+                    <label class="option-label">Available Sizes</label>
+                    <div class="size-options" id="size-options">
+                        <!-- Sizes will be populated by JavaScript -->
                     </div>
                 </div>
+
+                <div class="option-group">
+                    <label class="option-label">Available Colors</label>
+                    <div class="color-options" id="color-options">
+                        <!-- Colors will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-primary buy-now-btn" onclick="handleBuyNow()">
+                    Buy Now
+                </button>
+                <button class="btn-secondary share-btn" onclick="handleShare()">
+                    <span class="share-icon">⤴</span>
+                    Share
+                </button>
             </div>
         </div>
     </div>
@@ -78,66 +87,497 @@
 
 {% include "footer.html" %}
 
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
-<script>
-    function change_image(image) {
-        var container = document.getElementById("main-image");
-        container.src = image.src;
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
-    document.addEventListener("DOMContentLoaded", function(event) {
-        var swiper = new Swiper('.thumbnail-slider', {
-            slidesPerView: 3,
-            spaceBetween: 10,
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: 2,
-                },
-                768: {
-                    slidesPerView: 3,
-                },
-            },
-        });
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        line-height: 1.6;
+    }
 
-        // Calculate and display the discount percentage
+    .product-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+
+    .product-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: start;
+    }
+
+    /* Images Section */
+    .product-images {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .thumbnail-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 80px;
+    }
+
+    .thumbnail-item {
+        width: 80px;
+        height: 80px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .thumbnail-item.active {
+        border-color: #ff6b35;
+    }
+
+    .thumbnail-item:hover {
+        border-color: #ff6b35;
+        opacity: 0.8;
+    }
+
+    .thumbnail-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .main-image-container {
+        flex: 1;
+        position: relative;
+        background-color: #f8f9fa;
+        border-radius: 12px;
+        overflow: hidden;
+        min-height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #main-image {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        transition: all 0.3s ease;
+    }
+
+    .image-navigation {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        color: #333;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-btn:hover {
+        background: #ff6b35;
+        color: white;
+    }
+
+    /* Product Details Section */
+    .product-details {
+        padding: 1rem 0;
+    }
+
+    .product-header {
+        margin-bottom: 2rem;
+    }
+
+    .back-link {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .back-link:hover {
+        color: #ff6b35;
+    }
+
+    .product-info {
+        margin-bottom: 2rem;
+    }
+
+    .brand-name {
+        color: #ff6b35;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
+    }
+
+    .product-title {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+    }
+
+    .product-category {
+        color: #666;
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .price-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .current-price {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #000;
+    }
+
+    .original-price {
+        font-size: 1.2rem;
+        color: #999;
+        text-decoration: line-through;
+    }
+
+    .discount-badge {
+        background: #ff6b35;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .tax-info {
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+    .product-description {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .product-description p {
+        color: #555;
+        line-height: 1.7;
+    }
+
+    .product-options {
+        margin-bottom: 3rem;
+    }
+
+    .option-group {
+        margin-bottom: 2rem;
+    }
+
+    .option-label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #333;
+    }
+
+    .size-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .size-option {
+        padding: 0.75rem 1.25rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        min-width: 60px;
+        text-align: center;
+    }
+
+    .size-option:hover,
+    .size-option.selected {
+        border-color: #ff6b35;
+        background: #ff6b35;
+        color: white;
+    }
+
+    .color-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .color-option {
+        padding: 0.5rem 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .color-option:hover,
+    .color-option.selected {
+        border-color: #ff6b35;
+        background: #ff6b35;
+        color: white;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn-primary {
+        flex: 1;
+        background: #000;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background: #333;
+        transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+        background: transparent;
+        color: #666;
+        border: 2px solid #e0e0e0;
+        padding: 1rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .btn-secondary:hover {
+        border-color: #ff6b35;
+        color: #ff6b35;
+    }
+
+    .share-icon {
+        font-size: 1.2rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .product-container {
+            padding: 1rem;
+        }
+
+        .product-wrapper {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .product-images {
+            flex-direction: column-reverse;
+        }
+
+        .thumbnail-nav {
+            flex-direction: row;
+            width: 100%;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+        }
+
+        .thumbnail-item {
+            flex-shrink: 0;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+        }
+
+        .action-buttons {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<script>
+    let currentImageIndex = 0;
+    const images = [
+        '{{product.imgUrl1}}',
+        '{{product.imgUrl2}}',
+        '{{product.imgUrl3}}',
+        '{{product.imgUrl4}}'
+    ];
+
+    function change_image(src, element) {
+        document.getElementById("main-image").src = src;
+
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail-item').forEach(thumb => {
+            thumb.classList.remove('active');
+        });
+        element.classList.add('active');
+
+        // Update current index
+        currentImageIndex = images.indexOf(src);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        updateMainImage();
+    }
+
+    function previousImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        updateMainImage();
+    }
+
+    function updateMainImage() {
+        document.getElementById("main-image").src = images[currentImageIndex];
+
+        // Update active thumbnail
+        document.querySelectorAll('.thumbnail-item').forEach((thumb, index) => {
+            thumb.classList.toggle('active', index === currentImageIndex);
+        });
+    }
+
+    function populateSizes() {
+        const sizesContainer = document.getElementById('size-options');
+        const sizes = '{{product.sizes}}'.split(',').map(s => s.trim()).filter(s => s);
+
+        sizes.forEach(size => {
+            const sizeElement = document.createElement('div');
+            sizeElement.className = 'size-option';
+            sizeElement.textContent = size;
+            sizeElement.onclick = () => selectSize(sizeElement);
+            sizesContainer.appendChild(sizeElement);
+        });
+    }
+
+    function populateColors() {
+        const colorsContainer = document.getElementById('color-options');
+        const colors = '{{product.colors}}'.split(',').map(c => c.trim()).filter(c => c);
+
+        colors.forEach(color => {
+            const colorElement = document.createElement('div');
+            colorElement.className = 'color-option';
+            colorElement.textContent = color;
+            colorElement.onclick = () => selectColor(colorElement);
+            colorsContainer.appendChild(colorElement);
+        });
+    }
+
+    function selectSize(element) {
+        document.querySelectorAll('.size-option').forEach(size => {
+            size.classList.remove('selected');
+        });
+        element.classList.add('selected');
+    }
+
+    function selectColor(element) {
+        document.querySelectorAll('.color-option').forEach(color => {
+            color.classList.remove('selected');
+        });
+        element.classList.add('selected');
+    }
+
+    function calculateDiscount() {
         const currentPrice = {{product.price}};
         const originalPrice = {{product.original_price}};
         const discountPercentage = Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
-        document.querySelector('.discount-percentage').innerText = discountPercentage > 0 ? `${discountPercentage}% OFF` : 'No Discount';
 
-        // WhatsApp Button Click Event
-        document.getElementById("whatsapp-button").addEventListener("click", function() {
-            const productTitle = "{{product.title}}";
-            const productInfo = "{{product.productInfo}}";
-            const productPrice = "{{product.price}}";
-            const whatsappMessage = `I'm interested in buying the following product:\n\nProduct: ${productTitle}\nPrice: ₹${productPrice}\nDetails: ${productInfo}`;
-            const whatsappURL = `https://wa.me/?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappURL, '_blank');
-        });
+        const discountBadge = document.getElementById('discount-badge');
+        if (discountPercentage > 0) {
+            discountBadge.textContent = `${discountPercentage}% OFF`;
+        } else {
+            discountBadge.style.display = 'none';
+        }
+    }
 
-        // Share Button Click Event
-        document.getElementById("share-button").addEventListener("click", function() {
-            const productTitle = "{{product.title}}";
-            const productInfo = "{{product.productInfo}}";
-            const productPrice = "{{product.price}}";
-            const shareMessage = `Check out this product:\n\nProduct: ${productTitle}\nPrice: ₹${productPrice}\nDetails: ${productInfo}`;
-            if (navigator.share) {
-                navigator.share({
-                    title: productTitle,
-                    text: shareMessage,
-                    url: window.location.href
-                }).then(() => {
-                    console.log('Thanks for sharing!');
-                }).catch(console.error);
-            } else {
-                alert("Your browser does not support the Web Share API.");
-            }
-        });
+    function handleBuyNow() {
+        const selectedSize = document.querySelector('.size-option.selected');
+        const selectedColor = document.querySelector('.color-option.selected');
+
+        if (!selectedSize) {
+            alert('Please select a size');
+            return;
+        }
+
+        if (!selectedColor) {
+            alert('Please select a color');
+            return;
+        }
+
+        // Here you can add your order processing logic
+        alert(`Order placed for: {{product.title}}\nSize: ${selectedSize.textContent}\nColor: ${selectedColor.textContent}\nPrice: ₹{{product.price}}`);
+    }
+
+    function handleShare() {
+        const productTitle = "{{product.title}}";
+        const productPrice = "{{product.price}}";
+        const shareMessage = `Check out this product: ${productTitle} - ₹${productPrice}`;
+
+        if (navigator.share) {
+            navigator.share({
+                title: productTitle,
+                text: shareMessage,
+                url: window.location.href
+            }).then(() => {
+                console.log('Thanks for sharing!');
+            }).catch(console.error);
+        } else {
+            // Fallback for browsers that don't support Web Share API
+            navigator.clipboard.writeText(`${shareMessage} - ${window.location.href}`).then(() => {
+                alert('Product link copied to clipboard!');
+            }).catch(() => {
+                alert('Unable to copy link. Please share manually.');
+            });
+        }
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+        populateSizes();
+        populateColors();
+        calculateDiscount();
     });
 </script>
