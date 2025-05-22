@@ -159,7 +159,15 @@ def shop():
 
     if price_range:
         min_price, max_price = map(float, price_range.split('-'))
-        products_query = products_query.filter(Product.original_price.between(min_price, max_price))
+
+        # Adjust boundaries to prevent overlap
+        if min_price == 0:
+            products_query = products_query.filter(Product.original_price >= min_price,
+                                                   Product.original_price <= max_price)
+        else:
+            products_query = products_query.filter(Product.original_price > min_price,
+                                                   Product.original_price <= max_price)
+
     if sort_order == 'desc':
         products = products_query.order_by(Product.price.desc()).all()
     else:
@@ -249,9 +257,24 @@ def admin():
     return response
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET'])
 def search():
-    return redirect(url_for('shop'))
+    query = request.args.get('query', '').strip()
+
+    if not query:
+        # If no query, just show all products
+        products = Product.query.order_by(Product.price.asc()).all()
+    else:
+        # Filter products by title or category or description containing the query (case insensitive)
+        products = Product.query.filter(
+            db.or_(
+                Product.title.ilike(f'%{query}%'),
+                Product.category.ilike(f'%{query}%'),
+                Product.productInfo.ilike(f'%{query}%')
+            )
+        ).order_by(Product.price.asc()).all()
+
+    return render_template('shop.html', products=products, search_query=query)
 
 
 @app.route('/admin/all')
@@ -259,7 +282,6 @@ def search():
 def all():
     products = Product.query.all()
     return render_template('allproducts.html', products=products)
-
 
 @app.route('/faq')
 def faq():
@@ -272,4 +294,4 @@ with app.app_context():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run()
+    app.run(debug=True)
