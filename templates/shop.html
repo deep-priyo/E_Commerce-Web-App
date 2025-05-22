@@ -26,8 +26,8 @@
             <div class="col-lg-3">
                 <div class="shop__sidebar">
                     <div class="shop__sidebar__search">
-                        <form action="#" method="GET">
-                            <input type="text" name="search" placeholder="Search...">
+                        <form action="/search" method="GET" >
+                            <input type="text" name="query" placeholder="Oxford Shirt...">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -47,6 +47,7 @@
                                                 <li><a href="{{ url_for('shop', category='Shoes') }}">Shoes </a></li>
                                                 <li><a href="{{ url_for('shop', category='Accessories') }}">Accessories </a></li>
                                                 <li><a href="{{ url_for('shop', category='Kids') }}">Kids </a></li>
+
                                             </ul>
                                         </div>
                                     </div>
@@ -60,15 +61,24 @@
                                     <div class="card-body">
                                         <div class="shop__sidebar__price">
     <ul>
-        <li><a href="{{ url_for('shop', price='0-200') }}">₹0 - 200</a></li>
-        <li><a href="{{ url_for('shop', price='200-500') }}">₹200.00 - 500</a></li>
-        <li><a href="{{ url_for('shop', price='500-1000') }}">₹500 - ₹1000.00</a></li>
-        <li><a href="{{ url_for('shop', price='1000-2000') }}">₹1000 - ₹2000.00</a></li>
-        <li><a href="{{ url_for('shop', price='2000-1000000') }}">₹2000+</a></li>
+      <li><a href="{{ url_for('shop', price='0-200') }}">₹0 - ₹200</a></li>
+<li><a href="{{ url_for('shop', price='200-500') }}">₹201 - ₹500</a></li>
+<li><a href="{{ url_for('shop', price='500-1000') }}">₹501 - ₹1000</a></li>
+<li><a href="{{ url_for('shop', price='1000-2000') }}">₹1001 - ₹2000</a></li>
+<li><a href="{{ url_for('shop', price='2000-1000000') }}">₹2001+</a></li>
+
     </ul>
+
 </div>
                                     </div>
+
                                 </div>
+<button style="all: unset; color: grey; font-size: 0.95rem; cursor: pointer; margin-top:40px;">
+  <a href="{{ url_for('shop') }}" style="color: grey; text-decoration: none; ">
+    ✕ Clear Filters
+  </a>
+</button>
+
                             </div>
                         </div>
                     </div>
