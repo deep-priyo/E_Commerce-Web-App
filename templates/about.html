@@ -17,83 +17,246 @@
     </section>
     <!-- Breadcrumb Section End -->
 
-    <!-- About Section Begin -->
-    <section class="about spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="about__pic">
-                        <img src="img/about/about-us.jpg" alt="">
+<section class="team spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Meet The Team</h2>
+                    <p class="team-subtitle">The talented developers behind this ecommerce MVP app</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="team__item text-center">
+                    <div class="team__item__pic">
+                        <div class="profile-image-container">
+                            <img src="{{ url_for('static', filename='img/profile/priyadeep.png') }}" alt="Priyadeep">
+                        </div>
+                    </div>
+                    <div class="team__item__text">
+                        <h4>Priyadeep</h4>
+                        <p>Full Stack Developer with Expertise in Backend Systems</p>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="about__item">
-                        <h4>Who We Are ?</h4>
-                        <p>The MMG. #1 Dealer in clothing and fashion.</p>
+
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="team__item text-center">
+                    <div class="team__item__pic">
+                        <div class="profile-image-container">
+                            <img src="{{ url_for('static', filename='img/profile/arpan.png') }}" alt="Arpan">
+                        </div>
+                    </div>
+                    <div class="team__item__text">
+                        <h4>Arpan</h4>
+                        <p>Full Stack Developer with Expertise in Frontend Systems</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="about__item">
-                        <h4>What Do We Do ?</h4>
-                        <p>We sell clothes</p>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-6">
+                <div class="team__item text-center">
+                    <div class="team__item__pic">
+                        <div class="profile-image-container">
+                            <img src="{{ url_for('static', filename='img/profile/swarnojit.png') }}" alt="Swarnojit">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="about__item">
-                        <h4>Why Choose Us</h4>
-                        <p>Best quality clothing at affordable price.</p>
+                    <div class="team__item__text">
+                        <h4>Swarnojit</h4>
+                        <p>AI & ML Engineer</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- About Section End -->
+    </div>
+</section>
 
-
-
-    <!-- Counter Section Begin -->
-    <section class="counter spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="counter__item">
-                        <div class="counter__item__number">
-                            <h2 class="cn_num">102</h2>
-                        </div>
-                        <span>Our <br />Clients</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="counter__item">
-                        <div class="counter__item__number">
-                            <h2 class="cn_num">30</h2>
-                        </div>
-                        <span>Total <br />Categories</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="counter__item">
-                        <div class="counter__item__number">
-                            <h2 class="cn_num">102</h2>
-                        </div>
-                        <span>In <br />Country</span>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="counter__item">
-                        <div class="counter__item__number">
-                            <h2 class="cn_num">98</h2>
-                            <strong>%</strong>
-                        </div>
-                        <span>Happy <br />Customer</span>
-                    </div>
+<!-- Team Achievements Section Begin -->
+<section class="achievements spad" style="background-color: #f5f5f5;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Our Achievements</h2>
+                    <p class="achievements-subtitle">Proven track record of excellence</p>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Counter Section End -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="achievement__item text-center">
+                    <div class="achievement__item__number">
+                        <h2 class="counter">24</h2>
+                    </div>
+                    <span>Successful<br>Projects</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="achievement__item text-center">
+                    <div class="achievement__item__number">
+                        <h2 class="counter">12</h2>
+                    </div>
+                    <span>Hackathon<br>Wins</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="achievement__item text-center">
+                    <div class="achievement__item__number">
+                        <h2 class="counter">5</h2>
+                    </div>
+                    <span>Awards<br>Received</span>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="achievement__item text-center">
+                    <div class="achievement__item__number">
+                        <h2 class="counter">98</h2>
+                        <strong>%</strong>
+                    </div>
+                    <span>Client<br>Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Team Achievements Section End -->
+
+<style>
+    /* Team Section Styles */
+    .team-subtitle {
+        font-size: 18px;
+        color: #666;
+        margin-top: -10px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: 0 auto;
+        transition: all 0.3s ease;
+        border: 5px solid transparent;
+        position: relative;
+    }
+
+    .profile-image-container img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        transition: all 0.5s ease;
+    }
+
+    .team__item:hover .profile-image-container {
+        border-color: #e53637;
+        transform: scale(1.05);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .team__item:hover img {
+        transform: scale(1.1);
+    }
+
+    .team__item__text h4 {
+        font-weight: 700;
+        color: #111111;
+        margin-top: 25px;
+        margin-bottom: 8px;
+        transition: all 0.3s;
+    }
+
+    .team__item:hover .team__item__text h4 {
+        color: #e53637;
+    }
+
+    .team__item__text p {
+        margin-bottom: 0;
+        color: #666;
+        font-style: italic;
+    }
+
+    /* Achievements Section Styles */
+    .achievements {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+
+    .achievements-subtitle {
+        font-size: 18px;
+        color: #666;
+        margin-top: -10px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .achievement__item {
+        background: #ffffff;
+        padding: 30px 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        margin-bottom: 30px;
+        transition: all 0.3s ease;
+    }
+
+    .achievement__item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .achievement__item__number h2 {
+        color: #e53637;
+        font-size: 48px;
+        font-weight: 700;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+
+    .achievement__item__number strong {
+        color: #e53637;
+        font-size: 24px;
+        font-weight: 700;
+        position: relative;
+        top: -15px;
+    }
+
+    .achievement__item span {
+        color: #111111;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.4;
+    }
+</style>
+
+<script>
+    // Simple counter animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const target = +counter.innerText;
+            const increment = target / speed;
+            let count = 0;
+
+            const updateCount = () => {
+                if(count < target) {
+                    count += increment;
+                    counter.innerText = Math.ceil(count);
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            counter.innerText = '0';
+            updateCount();
+        });
+    });
+</script>
 
 
 
