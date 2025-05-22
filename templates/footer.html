@@ -1,69 +1,112 @@
 <!-- Footer Section Begin -->
-<footer class="footer">
+<footer class="footer" style="background-color: #0f0f0f; color: #ddd; padding: 60px 0 30px; font-family: 'Segoe UI', sans-serif;">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+
+            <!-- Brand Info -->
+            <div class="col-lg-3 col-md-6 mb-4">
                 <div class="footer__about">
-                    <div class="footer__logo">
-                        <a href="{{url_for('index')}}"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                    <div class="footer__logo mb-3">
+                        <a href="{{ url_for('index') }}">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" style="max-width: 140px;">
+                        </a>
                     </div>
-                    <p>The customer is at the heart of our unique business model.</p>
-
+                    <p>Where fashion meets finesse. Discover pieces crafted with purpose, style, and soul.</p>
                 </div>
             </div>
-            <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h6>Shopping</h6>
-                    <ul>
-                        <li><a href="{{url_for('shop')}}">Clothing Store</a></li>
-                        <li><a href="{{url_for('shop')}}">Trending Shoes</a></li>
-                        <li><a href="{{url_for('shop')}}">Accessories</a></li>
-                        <li><a href="{{url_for('shop')}}">Sale</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-3 col-sm-6">
-                <div class="footer__widget">
-                    <h6>Shopping</h6>
-                    <ul>
-                        <li><a href="{{url_for('contact')}}">Contact Us</a></li>
-                        <li><a href="{{url_for('about')}}">About Us</a></li>
-                        <li><a href="{{url_for('faq')}}">Facts And Questions</a></li>
-                        <li><a href="{{url_for('contact')}}">Have a question?</a></li>
 
+            <!-- Fancy Shopping Links -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="footer__widget">
+                    <h6 class="text-uppercase text-white mb-4" style="font-weight: bold;">Explore Collections</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('shop', category='Men') }}" class="footer-link">Men’s Collection</a></li>
+                        <li><a href="{{ url_for('shop', category='Women') }}" class="footer-link">Women’s Wardrobe</a></li>
+                        <li><a href="{{ url_for('shop', category='Kids') }}" class="footer-link">Kids’ Corner</a></li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Customer Help -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="footer__widget">
+                    <h6 class="text-uppercase text-white mb-4" style="font-weight: bold;">Customer Help</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('contact') }}" class="footer-link">Contact Us</a></li>
+                        <li><a href="{{ url_for('about') }}" class="footer-link">Our Story</a></li>
+                        <li><a href="{{ url_for('faq') }}" class="footer-link">FAQs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="footer__widget">
+                    <h6 class="text-uppercase text-white mb-4" style="font-weight: bold;">Stay in Style</h6>
+                    <p>Get exclusive updates & offers straight to your inbox.</p>
+                   <form action="#" class="d-flex mt-3" style="gap: 10px;">
+  <input type="email" placeholder="Your email" class="form-control"
+         style="border: none; padding: 10px 15px; border-radius: 5px; font-size: 14px; height: 40px;"/>
+
+  <button type="submit" class="btn"
+          style="background-color: #007bff; color: white; border: none; padding: 10px 20px; font-weight: bold; border-radius: 5px; height: 40px; display: flex; align-items: center; justify-content: center;">
+    Join
+  </button>
+</form>
+
+                </div>
+            </div>
 
         </div>
+
+        <hr style="border-top: 1px solid #333; margin-top: 40px;">
+
+        <!-- Footer Bottom -->
         <div class="row">
             <div class="col-lg-12 text-center">
-                <div class="footer__copyright__text">
-                    <
-                    <p>Copyright ©
-                        <script>
-                            document.write(new Date().getFullYear());
-                        </script> All rights reserved | The Ma Manasa Garments
-                    </p>
-
-                </div>
+                <p class="mb-0" style="font-size: 14px;">&copy;
+                    <script>document.write(new Date().getFullYear());</script> The Vogue Vista. All Rights Reserved.
+                </p>
             </div>
         </div>
     </div>
 </footer>
 <!-- Footer Section End -->
 
-<!-- Search Begin -->
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here.....">
-        </form>
-    </div>
-</div>
-<!-- Search End -->
+<!-- Extra Footer Hover Styles -->
+<style>
+    .footer-link {
+        display: inline-block;
+        color: #ccc;
+        position: relative;
+        text-decoration: none;
+        margin-bottom: 10px;
+        transition: color 0.3s ease;
+    }
+
+    .footer-link::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: 0;
+        bottom: -3px;
+        background-color: #fff;
+        transition: width 0.3s;
+    }
+
+    .footer-link:hover {
+        color: #fff;
+    }
+
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    .footer input::placeholder {
+        color: #999;
+    }
+</style>
 
 <!-- Js Plugins -->
 <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
