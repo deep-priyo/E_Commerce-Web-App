@@ -1,56 +1,317 @@
 {%include 'header.html'%}
-<div class="container">
-        <h1>Frequently Asked Questions (FAQs)</h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vogue Vista - Frequently Asked Questions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #000000;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-highlight {
+            color: #ff6b35;
+            font-weight: 400;
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            padding: 2rem 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #000000;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            color: #ff6b35;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #ff6b35;
+            transition: all 0.3s ease;
+            width: 20px;
+            text-align: center;
+        }
+
+        .faq-question.active::after {
+            content: '−';
+            transform: rotate(0deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            opacity: 0;
+        }
+
+        .faq-answer.active {
+            max-height: 300px;
+            opacity: 1;
+            padding-bottom: 2rem;
+        }
+
+        .faq-answer p {
+            color: #666666;
+            font-size: 1rem;
+            line-height: 1.7;
+            padding-right: 3rem;
+        }
+
+        .faq-number {
+            color: #ff6b35;
+            font-weight: 500;
+            margin-right: 1rem;
+        }
+
+        /* Subtle animations */
+        .faq-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .faq-item:nth-child(1) { animation-delay: 0.1s; }
+        .faq-item:nth-child(2) { animation-delay: 0.15s; }
+        .faq-item:nth-child(3) { animation-delay: 0.2s; }
+        .faq-item:nth-child(4) { animation-delay: 0.25s; }
+        .faq-item:nth-child(5) { animation-delay: 0.3s; }
+        .faq-item:nth-child(6) { animation-delay: 0.35s; }
+        .faq-item:nth-child(7) { animation-delay: 0.4s; }
+        .faq-item:nth-child(8) { animation-delay: 0.45s; }
+        .faq-item:nth-child(9) { animation-delay: 0.5s; }
+        .faq-item:nth-child(10) { animation-delay: 0.55s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 3rem;
+            }
+
+            .faq-question {
+                font-size: 1rem;
+                padding: 1.5rem 0;
+            }
+
+            .faq-answer p {
+                padding-right: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            .faq-question {
+                font-size: 0.95rem;
+            }
+
+            .faq-answer p {
+                padding-right: 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus states for accessibility */
+        .faq-question:focus {
+            outline: 2px solid #ff6b35;
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Frequently Asked Questions <span class="brand-highlight">(FAQs)</span></h1>
 
         <div class="faq">
             <div class="faq-item">
-                <h2>1. What areas do you deliver to?</h2>
-                <p>We offer free home delivery across India. No matter where you are located, you can enjoy our branded clothing with free shipping right to your doorstep.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">1.</span>What is your shipping policy?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer free standard shipping on all orders over $50. Orders are typically processed within 1-2 business days and delivered within 5-7 business days. Express shipping options are also available at checkout for faster delivery.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>2. Can I replace an item if I am not satisfied with it?</h2>
-                <p>Yes, we offer replacement services for all items. If you're not happy with your purchase, please contact us for assistance with the replacement process.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">2.</span>What is your return and exchange policy?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept returns and exchanges within 30 days of purchase. Items must be in original condition with tags attached. Simply contact our customer service team to initiate a return or exchange, and we'll provide you with a prepaid return label.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>3. Who is the owner of The MMG Clothing Brand?</h2>
-                <p>The MMG Clothing Brand is owned by Biswajit Mondal. Our team is dedicated to providing you with high-quality branded clothing at the best prices.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">3.</span>How do I find the right size?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Each product page includes a detailed size chart with measurements. We recommend measuring yourself and comparing to our size guide. If you're between sizes, we generally recommend sizing up for a more comfortable fit.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>4. How can I contact customer support?</h2>
-                <p>For any inquiries or assistance, please contact us at Sraboni Bhavan, Purvayon, 700136. Alternatively, you can reach out to us through our website’s contact form or customer service email.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">4.</span>How can I track my order?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Once your order ships, you'll receive a tracking number via email. You can use this number to track your package on our website or the carrier's website. You'll also receive updates about your order status throughout the shipping process.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>5. Are your products available in different sizes and colors?</h2>
-                <p>Yes, we offer a variety of sizes and colors for our branded clothing. Please check the product details on our website for more information on available options.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">5.</span>What payment methods do you accept?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept all major credit cards (Visa, MasterCard, American Express), PayPal, Apple Pay, Google Pay, and shop-now-pay-later options like Afterpay and Klarna for your convenience.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>6. How do I track my order?</h2>
-                <p>Once your order is dispatched, we will send you a tracking number via email or SMS. You can use this tracking number to monitor the status of your delivery.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">6.</span>Do you offer international shipping?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, we ship to over 50 countries worldwide. International shipping costs and delivery times vary by location. Please note that customers are responsible for any customs duties or taxes that may apply.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>7. What if I receive a damaged or incorrect item?</h2>
-                <p>If you receive a damaged or incorrect item, please contact us immediately. We will assist you in resolving the issue and ensure you receive the correct or undamaged product.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">7.</span>How do I care for my garments?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Care instructions are provided on each garment's label and product page. Generally, we recommend washing in cold water, air drying when possible, and following specific care instructions to maintain the quality and longevity of your items.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>8. Can I return an item if I change my mind?</h2>
-                <p>We offer replacements for items, but please note that our policy does not include returns for items simply due to a change of mind. Contact us for further details on our replacement policy.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">8.</span>Do you have a loyalty program?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Join our Vogue Vista Rewards program to earn points on every purchase, receive exclusive discounts, early access to sales, and special birthday offers. Sign up is free and you'll start earning rewards immediately.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>9. What makes The MMG Clothing Brand special?</h2>
-                <p>At The MMG Clothing Brand, we pride ourselves on providing high-quality branded clothing at the best prices. Our dedication to customer satisfaction and our commitment to free shipping across India set us apart from the rest.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">9.</span>What makes Vogue Vista special?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>At Vogue Vista, we curate the latest fashion trends with a focus on quality, style, and affordability. Our commitment to sustainable fashion practices, exceptional customer service, and inclusive sizing makes us stand out in the fashion industry.</p>
+                </div>
             </div>
 
             <div class="faq-item">
-                <h2>10. How do I place an order on your website?</h2>
-                <p>To place an order, simply browse our collection on the website, select the items you wish to purchase, and proceed to checkout. Follow the prompts to enter your shipping information and payment details.</p>
+                <div class="faq-question" tabindex="0">
+                    <span><span class="faq-number">10.</span>How can I contact customer support?</span>
+                </div>
+                <div class="faq-answer">
+                    <p>Our customer support team is available 24/7 via live chat on our website, email at support@voguevista.com, or phone at 1-800-VOGUE-VV. We're here to help with any questions or concerns you may have.</p>
+                </div>
             </div>
         </div>
-    </div>{%include 'footer.html'%}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqQuestions = document.querySelectorAll('.faq-question');
+
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', toggleFaq);
+                question.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        toggleFaq.call(this);
+                    }
+                });
+            });
+
+            function toggleFaq() {
+                const answer = this.nextElementSibling;
+                const isActive = this.classList.contains('active');
+
+                // Close all other FAQ items
+                faqQuestions.forEach(q => {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('active');
+                });
+
+                // Toggle current item
+                if (!isActive) {
+                    this.classList.add('active');
+                    answer.classList.add('active');
+                }
+            }
+        });
+    </script>
+</body>
+
+{%include 'footer.html'%}
